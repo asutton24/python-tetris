@@ -434,7 +434,7 @@ def main():
             else:
                 sleep(1)
                 running = False
-        if tickClock == tickMax:
+        if tickClock >= tickMax:
             down = block.moveDown(game, screen)
             if not down[0]:
                 noPiece = True
@@ -445,10 +445,10 @@ def main():
             if not down[0]:
                 noPiece = True
             game = down[1]
-        if lineClear == goal:
-            tickClock -= 6
-            if tickClock == 0:
-                tickClock = 6
+        if lineClear >= goal:
+            tickMax -= 6
+            if tickMax == 0:
+                tickMax = 6
             goal += 10
         tickClock += 1
         game.drawBoard(screen)
